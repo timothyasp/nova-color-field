@@ -1,9 +1,11 @@
 {
-    "name": "timothyasp/color",
-    "description": "A Laravel Nova field.",
+    "name": "timothyasp/nova-color-field",
+    "description": "A Laravel Nova Color Picker field.",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
+        "color picker",
+        "field"
     ],
     "license": "MIT",
     "require": {
