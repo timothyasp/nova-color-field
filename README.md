@@ -1,6 +1,6 @@
 # Laravel Nova Color Field
 
-Dead simple Laravel Nova Color field.  Includes a picker from the `vue-color`  
+Dead simple Laravel Nova Color field.  Includes a color picker from the `vue-color` component.
 
 ### Details Page
 
