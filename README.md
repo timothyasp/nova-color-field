@@ -4,11 +4,11 @@ Dead simple Laravel Nova Color field.  Includes a picker from the `vue-color`
 
 ### Details Page
 
-https://cdn-pro.dprcdn.net/files/acc_465612/jI2x1G
+![details page color input](https://cdn-pro.dprcdn.net/files/acc_465612/jI2x1G)
 
 ### Index 
 
-https://d.pr/i/VnWbt5
+![index color](https://cdn-pro.dprcdn.net/files/acc_465612/VnWbt5)
 
 ## Installation
 
