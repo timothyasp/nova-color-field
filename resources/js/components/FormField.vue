@@ -27,9 +27,9 @@ export default {
     props: ["resourceName", "resourceId", "field"],
 
     methods: {
-        /*
-             * Set the initial, internal value for the field.
-             */
+        /**
+         * Set the initial, internal value for the field.
+         */
         setInitialValue() {
             this.value = this.field.value || "";
         },

@@ -22,13 +22,13 @@ composer require timothyasp/nova-color-field
 
 In your resource class, add the following to your `fields` method:
 
-```js
+```php
 Color::make("Field");
 ```
 
 This will add the color picker to your resource, using vue-color's "slider" component by default.
 If you'd like to leverage another vue-color component, you can do so by calling that component's
-name as method after `Color::make()`:
+name as a method after `Color::make()`:
 
 ```php
 Color::make('Field')->compact()
