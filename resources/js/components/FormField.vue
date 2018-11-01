@@ -10,7 +10,7 @@
                        v-model="value"
                 />
             </div>
-            <slider-picker :id="field.name" :class="errorClasses" :value="value" @input="handleChange"></slider-picker>
+            <component :is="component" :id="field.name" :class="errorClasses" :value="value" @input="handleChange"></component>
             <p v-if="hasError" class="my-2 text-danger">
                 {{ firstError }}
             </p>
@@ -19,34 +19,44 @@
 </template>
 
 <script>
-    import {FormField, HandlesValidationErrors} from 'laravel-nova'
+import { FormField, HandlesValidationErrors } from "laravel-nova";
 
-    export default {
-        mixins: [FormField, HandlesValidationErrors],
+export default {
+    mixins: [FormField, HandlesValidationErrors],
 
-        props: ['resourceName', 'resourceId', 'field'],
+    props: ["resourceName", "resourceId", "field"],
 
-        methods: {
-            /*
+    methods: {
+        /*
              * Set the initial, internal value for the field.
              */
-            setInitialValue() {
-                this.value = this.field.value || ''
-            },
+        setInitialValue() {
+            this.value = this.field.value || "";
+        },
 
-            /**
-             * Fill the given FormData object with the field's internal value.
-             */
-            fill(formData) {
-                formData.append(this.field.attribute, this.value || '')
-            },
+        /**
+         * Fill the given FormData object with the field's internal value.
+         */
+        fill(formData) {
+            formData.append(this.field.attribute, this.value || "");
+        },
 
-            /**
-             * Update the field's internal value.
-             */
-            handleChange(value) {
-                this.value = value.hex;
-            }
+        /**
+         * Update the field's internal value.
+         */
+        handleChange(value) {
+            this.value = value.hex;
+        }
+    },
+
+    computed: {
+        /**
+         * Determines which color picker component to use
+         */
+        component() {
+            console.log(this.field);
+            return this.field.pickerType + "-picker";
         }
     }
+};
 </script>
