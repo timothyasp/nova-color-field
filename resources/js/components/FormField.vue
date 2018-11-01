@@ -54,7 +54,6 @@ export default {
          * Determines which color picker component to use
          */
         component() {
-            console.log(this.field);
             return this.field.pickerType + "-picker";
         }
     }
