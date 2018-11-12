@@ -21,6 +21,10 @@ composer require timothyasp/nova-color-field
 ## Usage
 
 ```
+use Timothyasp\Color\Color;
+
+....
+
 Color::make('Field')
 ```
 
