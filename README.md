@@ -23,6 +23,10 @@ composer require timothyasp/nova-color-field
 In your resource class, add the following to your `fields` method:
 
 ```php
+use Timothyasp\Color\Color;
+
+....
+
 Color::make("Field");
 ```
 
@@ -31,6 +35,10 @@ If you'd like to leverage another vue-color component, you can do so by calling 
 name as a method after `Color::make()`:
 
 ```php
+use Timothyasp\Color\Color;
+
+....
+
 Color::make('Field')->compact()
 // or
 Color::make('Field')->slider()
