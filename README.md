@@ -51,6 +51,8 @@ and so on. You can use any one of: `chrome, compact, grayscale, material, photos
 -   [Timothy Asp](https://github.com/timothyasp)
 -   [Don Gilbert](https://github.com/dongilbert)
 
+Built for [QuizGriz - the #1 online trivia and quiz game site](https://grizly.com)
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
