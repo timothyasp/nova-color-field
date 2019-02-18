@@ -10,7 +10,14 @@
                        v-model="value"
                 />
             </div>
-            <component :is="component" :id="field.name" :class="errorClasses" :value="value" @input="handleChange"></component>
+            <component
+              :is="component"
+              :id="field.name"
+              :class="errorClasses"
+              :palette="palette"
+              :value="value"
+              @input="handleChange">
+            </component>
             <p v-if="hasError" class="my-2 text-danger">
                 {{ firstError }}
             </p>
@@ -55,6 +62,12 @@ export default {
          */
         component() {
             return this.field.pickerType + "-picker";
+        },
+        /**
+         * Set color palette.
+         */
+        palette() {
+            return this.field.palette || undefined;
         }
     }
 };
