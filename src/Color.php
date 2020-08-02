@@ -8,6 +8,7 @@ class Color extends Field
 {
     /**
      * The field's component.
+     *
      * @var string
      */
     public $component = 'color';
@@ -21,12 +22,12 @@ class Color extends Field
 
     public function pickerType(string $type)
     {
-        return $this->withMeta(['pickerType' => $type]);
+        return $this->withMeta([ 'pickerType' => $type ]);
     }
 
     public function palette(array $palette)
     {
-        return $this->withMeta(['palette' => $palette]);
+        return $this->withMeta([ 'palette' => $palette ]);
     }
 
     public function chrome()
@@ -68,4 +69,10 @@ class Color extends Field
     {
         return $this->pickerType('swatches');
     }
+
+    public function hex8()
+    {
+        return $this->withMeta([ 'hex8' => true ]);
+    }
+
 }
