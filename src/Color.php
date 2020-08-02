@@ -18,6 +18,7 @@ class Color extends Field
         parent::__construct($name, $attribute, $resolveCallback);
 
         $this->slider();
+        $this->autoHidePicker(false);
     }
 
     public function pickerType(string $type)
@@ -73,6 +74,11 @@ class Color extends Field
     public function hex8()
     {
         return $this->withMeta([ 'hex8' => true ]);
+    }
+
+    public function autoHidePicker(bool $shouldAutoHide = true)
+    {
+        return $this->withMeta([ 'autoHidePicker' => $shouldAutoHide ]);
     }
 
 }

@@ -1,32 +1,40 @@
 <template>
 
-    <default-field :field="field">
+    <default-field :field="field" class="color-picker">
 
         <template slot="field">
 
-            <div class="inline-flex mb-2">
+            <div ref="container">
 
-                <div class="color-input rounded-l-lg border-r-0 h-100 border border-60 color-input-value"
-                     :style="{ backgroundColor: value, width: '36px' }"/>
+                <div class="inline-flex mb-2" @click="showPicker">
 
-                <input :id="field.name" type="text"
-                       class="w-25 form-control form-input form-input-bordered color-input rounded-l-none"
-                       :class="errorClasses"
-                       :placeholder="field.name"
-                       v-model="value"/>
+                    <div class="color-input rounded-l-lg border-r-0 h-100 border border-60 color-input-value"
+                         :style="{ backgroundColor: value, width: '36px' }"/>
+
+                    <input ref="input"
+                           :id="field.name"
+                           type="text"
+                           class="w-25 form-control form-input form-input-bordered color-input rounded-l-none"
+                           :class="errorClasses"
+                           :placeholder="field.name"
+                           v-model="value"/>
+
+                </div>
+
+                <component ref="colorpicker"
+                           v-if="shouldShowPicker"
+                           :is="component"
+                           :id="field.name"
+                           :class="[ errorClasses, { absolute: field.autoHidePicker && field.pickerType !== 'slider' } ]"
+                           :palette="palette"
+                           v-model="value"
+                           @input="handleChange"/>
+
+                <p v-if="hasError" class="my-2 text-danger">
+                    {{ firstError }}
+                </p>
 
             </div>
-
-            <component :is="component"
-                       :id="field.name"
-                       :class="errorClasses"
-                       :palette="palette"
-                       v-model="value"
-                       @input="handleChange"/>
-
-            <p v-if="hasError" class="my-2 text-danger">
-                {{ firstError }}
-            </p>
 
         </template>
 
@@ -43,7 +51,57 @@ export default {
 
     props: [ 'resourceName', 'resourceId', 'field' ],
 
+    data() {
+        return {
+            shouldShowPicker: !this.field.autoHidePicker
+        }
+    },
+
     methods: {
+        documentClick(event) {
+
+            const inputElement = this.$refs.input
+            const container = this.$refs.container
+            const target = event.target
+
+            if (target === container) {
+                return
+            }
+
+            if (container.contains(target) === false) {
+
+                this.hidePicker()
+
+            } else {
+
+                inputElement.focus()
+
+            }
+
+        },
+        showPicker() {
+
+            if (this.field.autoHidePicker) {
+
+                if (!this.shouldShowPicker) {
+
+                    document.addEventListener('click', this.documentClick)
+
+                }
+
+                this.shouldShowPicker = true
+
+            }
+
+        },
+        hidePicker() {
+
+            document.removeEventListener('click', this.documentClick)
+
+            this.shouldShowPicker = false
+
+        },
+
         /**
          * Set the initial, internal value for the field.
          */
@@ -103,3 +161,9 @@ export default {
 }
 
 </script>
+
+<style>
+.color-picker .absolute {
+    position: absolute !important;
+}
+</style>
