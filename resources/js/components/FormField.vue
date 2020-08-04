@@ -56,7 +56,15 @@ export default {
             shouldShowPicker: !this.field.autoHidePicker
         }
     },
+    beforeDestroy() {
 
+        if (this.shouldShowPicker) {
+
+            document.removeEventListener('click', this.documentClick)
+
+        }
+
+    },
     methods: {
         documentClick(event) {
 
