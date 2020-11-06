@@ -68,4 +68,9 @@ class Color extends Field
     {
         return $this->pickerType('swatches');
     }
+    
+    public function plain()
+    {
+        return $this->pickerType('plain');
+    }
 }
