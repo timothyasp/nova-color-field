@@ -66,6 +66,7 @@ export default {
          */
         handleChange(value) {
             this.value = value.hex;
+            this.toggleColorPalette();
         },
         
         /**
