@@ -68,4 +68,9 @@ class Color extends Field
     {
         return $this->pickerType('swatches');
     }
+    
+    public function hide(bool $shouldHide = true)
+    {
+        return $this->withMeta(['hide' => $shouldHide]);
+    }
 }
