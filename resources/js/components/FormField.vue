@@ -1,7 +1,7 @@
 <template>
     <default-field :field="field">
         <template slot="field">
-            <div class="inline-flex mb-2">
+            <div class="inline-flex mb-2" @click="toggleColorPalette">
                 <div class="color-input rounded-l-lg border-r-0 h-100 border border-60 color-input-value" v-bind:style="{ backgroundColor: value, width: '36px' }"></div>
                 <input :id="field.name" type="text"
                        class="w-25 form-control form-input form-input-bordered color-input rounded-l-none"
@@ -11,6 +11,7 @@
                 />
             </div>
             <component
+              v-if="showPalette"
               :is="component"
               :id="field.name"
               :class="errorClasses"
@@ -33,6 +34,18 @@ export default {
 
     props: ["resourceName", "resourceId", "field"],
 
+    data() {
+        return {
+            showPalette: true,
+        };
+    },
+    
+    mounted() {
+        if (this.field.hide) {
+            this.showPalette = false;
+        }
+    },
+
     methods: {
         /**
          * Set the initial, internal value for the field.
@@ -53,7 +66,18 @@ export default {
          */
         handleChange(value) {
             this.value = value.hex;
-        }
+        },
+        
+        /**
+         * Toggle color picker visibility.
+         */
+        toggleColorPalette() {
+            if (!this.field.hide) {
+                return;
+            }
+
+            this.showPalette = !this.showPalette;
+        },
     },
 
     computed: {
