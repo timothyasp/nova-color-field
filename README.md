@@ -1,5 +1,11 @@
 # Laravel Nova Color Field
 
+Now works with Laravel Nova v4!  
+
+---
+
+If you still are using Nova v1-v3, use v1.0.4 of this field.
+
 Dead simple Laravel Nova Color field. Includes a color picker from the `vue-color` component.
 
 ### Details Page 
@@ -43,10 +49,10 @@ Color::make('Field')->compact()
 Color::make('Field')->slider()
 ```
 
-and so on. You can use any one of: `chrome, compact, grayscale, material, photoshop, sketch, slider, swatches`.
+and so on. You can use any one of: `chrome, compact, grayscale, material, photoshop, sketch, slider, swatches, twitter`.
 
 
-Palette support for adding custom colors to the pickers is also available:
+Palette support for adding custom colors to some of the pickers is also available:
 
 ```
 Color::make('Field')->compact()->palette(['#beaf00', '#DEADAF', '#000']);

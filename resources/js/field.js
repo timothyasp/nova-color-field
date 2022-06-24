@@ -6,19 +6,24 @@ import {
     Photoshop,
     Sketch,
     Slider,
-    Swatches
-} from "vue-color";
+    Swatches,
+    Twitter
+} from "@ckpack/vue-color";
+import IndexField from './components/IndexField'
+import DetailField from './components/DetailField'
+import FormField from './components/FormField'
 
-Nova.booting((Vue, router) => {
-    Vue.component("chrome-picker", Chrome);
-    Vue.component("compact-picker", Compact);
-    Vue.component("grayscale-picker", Grayscale);
-    Vue.component("material-picker", Material);
-    Vue.component("photoshop-picker", Photoshop);
-    Vue.component("sketch-picker", Sketch);
-    Vue.component("slider-picker", Slider);
-    Vue.component("swatches-picker", Swatches);
-    Vue.component("index-color", require("./components/IndexField"));
-    Vue.component("detail-color", require("./components/DetailField"));
-    Vue.component("form-color", require("./components/FormField"));
+Nova.booting((app, router, store) => {
+    app.component("chrome", Chrome);
+    app.component("compact", Compact);
+    app.component("grayscale", Grayscale);
+    app.component("material", Material);
+    app.component("photoshop", Photoshop);
+    app.component("sketch", Sketch);
+    app.component("slider", Slider);
+    app.component("swatches", Swatches);
+    app.component("twitter", Twitter);
+    app.component("index-color", IndexField);
+    app.component("detail-color", DetailField);
+    app.component("form-color", FormField);
 });
